@@ -16,7 +16,7 @@ Before you start, make sure you have:
 Fire up PowerShell and jump into your project directory:
 
 ```powershell
-cd C:\Users\ayush\Desktop\Code\CVM_plus_plus
+cd C:\Users\myste\Desktop\Code\CVMpp
 
 ```
 
@@ -60,13 +60,13 @@ exit
 To execute pre-written scripts, pass the file path directly to the executable:
 
 ```powershell
-.\cvm.exe tests\simple_math.cvm
+.\cvm.exe tests\BasicMath.cvm
 .\cvm.exe tests\variables.cvm
 .\cvm.exe tests\booleans.cvm
-.\cvm.exe tests\if_else.cvm
-.\cvm.exe tests\while_loop.cvm
-.\cvm.exe tests\calculator_demo.cvm
-.\cvm.exe tests\truth_machine.cvm
+.\cvm.exe tests\IfElse.cvm
+.\cvm.exe tests\whileLoop.cvm
+.\cvm.exe tests\Calculator.cvm
+.\cvm.exe tests\TrueFalse.cvm
 
 ```
 
@@ -75,7 +75,7 @@ To execute pre-written scripts, pass the file path directly to the executable:
 Run this script to test reading live user input from the console:
 
 ```powershell
-.\cvm.exe tests\input_print.cvm
+.\cvm.exe tests\inputPrint.cvm
 
 ```
 
@@ -99,7 +99,7 @@ If you need to record a quick demonstration, here is a clean, straightforward fl
 
 1. **Open PowerShell** and navigate to your directory:
 ```powershell
-cd C:\Users\ayush\Desktop\Code\CVM_plus_plus
+cd C:\Users\myste\Desktop\Code\CVMpp
 
 ```
 
@@ -113,7 +113,7 @@ g++ -std=c++17 -I include src\main.cpp src\token.cpp src\scanner.cpp src\parser.
 
 3. **Run the calculator demo** to showcase standard operations:
 ```powershell
-.\cvm.exe tests\calculator_demo.cvm
+.\cvm.exe tests\Calculator.cvm
 
 ```
 
@@ -121,7 +121,7 @@ g++ -std=c++17 -I include src\main.cpp src\token.cpp src\scanner.cpp src\parser.
 4. **Point out the console output**, highlighting how it clearly separates the generated AST, the bytecode, and the final VM results.
 5. **Run the truth-machine demo** to show control flow in action:
 ```powershell
-.\cvm.exe tests\truth_machine.cvm
+.\cvm.exe tests\TrueFalse.cvm
 
 ```
 
