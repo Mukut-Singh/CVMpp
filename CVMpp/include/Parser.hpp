@@ -1,55 +1,59 @@
 #pragma once
-#include <memory>
-#include <string>
 #include <vector>
-#include <unordered_map> // Good call adding this for later!
+#include <memory>
+#include <initializer_list>
+#include <stdexcept>
 #include "Token.hpp"
+#include "Expr.hpp"
+#include "Stmt.hpp" // <-- NEW
 
-class Scanner {
+class Parser {
 private:
-    std::string source;
     std::vector<Token> tokens;
-
-    // --- ADD THESE MISSING STATE VARIABLES ---
-    int start = 0;
     int current = 0;
-    int line = 1;
 
-    // --- ADD THESE MISSING METHOD DECLARATIONS ---
+    // --- NEW STATEMENT RULES ---
+    std::unique_ptr<Stmt> declaration();
+    std::unique_ptr<Stmt> varDeclaration();
+    std::unique_ptr<Stmt> statement();
+    std::unique_ptr<Stmt> printStatement();
+    std::unique_ptr<Stmt> ifStatement();
+    std::unique_ptr<Stmt> whileStatement();
+    std::unique_ptr<Stmt> expressionStatement();
+    std::vector<std::unique_ptr<Stmt>> block();
+    
+    // --- ERROR RECOVERY ---
+    void synchronize(); // Helps the parser recover if it hits a bad line
+
+    // --- EXISTING EXPRESSION RULES ---
+    std::unique_ptr<Expr> expression();
+    std::unique_ptr<Expr> assignment();
+    // ... (Keep equality, comparison, term, factor, unary, primary exactly the same)
+    std::unique_ptr<Expr> equality();
+    std::unique_ptr<Expr> comparison();
+    std::unique_ptr<Expr> term();
+    std::unique_ptr<Expr> factor();
+    std::unique_ptr<Expr> unary();
+    std::unique_ptr<Expr> primary();
+
+    // --- HELPER METHODS ---
+    bool match(std::initializer_list<TokenType> types);
+    bool check(TokenType type) const;
     bool isAtEnd() const;
-    void scanToken();
-    char advance();                     // <-- Add this!
-    void addToken(TokenType type);      // <-- Add this!
-    bool match(char expected);
-    char peek() const;
-    void string();
-    bool isDigit(char c) const;
-    char peekNext() const;
-    void number();
-    bool isAlpha(char c) const;
-    bool isAlphaNumeric(char c) const;
-    void identifier();
+    Token advance();
+    Token peek() const;
+    Token previous() const;
+    Token consume(TokenType type, const std::string& message);
 
-
-    std::unordered_map<std::string, TokenType> keywords = {
-        {"and",    TokenType::AND},
-        {"else",   TokenType::ELSE},
-        {"false",  TokenType::FALSE},
-        {"for",    TokenType::FOR},
-        {"if",     TokenType::IF},
-        {"input",  TokenType::INPUT},
-        {"let",    TokenType::LET},
-        {"or",     TokenType::OR},
-        {"print",  TokenType::PRINT},
-        {"return", TokenType::RETURN},
-        {"true",   TokenType::TRUE},
-        {"while",  TokenType::WHILE}
+    class ParseError : public std::runtime_error {
+    public:
+        ParseError(const std::string& message) : std::runtime_error(message) {}
     };
+    ParseError error(const Token& token, const std::string& message);
 
 public:
-    // Constructor
-    Scanner(const std::string& source);
-
-    // We know from main.cpp that we will need this function!
-    std::vector<Token> scanTokens();
+    Parser(const std::vector<Token>& tokens);
+    
+    // CHANGED: Now returns a list of statements instead of one expression!
+    std::vector<std::unique_ptr<Stmt>> parse(); 
 };
