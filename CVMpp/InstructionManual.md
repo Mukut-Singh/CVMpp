@@ -60,13 +60,13 @@ exit
 To execute pre-written scripts, pass the file path directly to the executable:
 
 ```powershell
-.\cvm.exe tests\BasicMath.cvm
-.\cvm.exe tests\variables.cvm
-.\cvm.exe tests\booleans.cvm
-.\cvm.exe tests\IfElse.cvm
-.\cvm.exe tests\whileLoop.cvm
-.\cvm.exe tests\Calculator.cvm
-.\cvm.exe tests\TrueFalse.cvm
+.\cvm.exe SampleTest\BasicMath.cvm
+.\cvm.exe SampleTest\variables.cvm
+.\cvm.exe SampleTest\booleans.cvm
+.\cvm.exe SampleTest\IfElse.cvm
+.\cvm.exe SampleTest\whileLoop.cvm
+.\cvm.exe SampleTest\Calculator.cvm
+.\cvm.exe SampleTest\TrueFalse.cvm
 
 ```
 
