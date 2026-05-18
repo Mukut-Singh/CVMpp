@@ -1,0 +1,39 @@
+#pragma once
+#include "Expr.hpp"
+#include "Stmt.hpp"
+#include "chunk.hpp"
+#include <iomanip>
+#include <iostream>
+#include <vector>
+
+class Compiler : public ExprVisitor, public StmtVisitor {
+private:
+    Chunk currentChunk;
+
+    void emitByte(uint8_t byte);
+    void emitByte(OpCode code);
+    void emitBytes(OpCode byte1, OpCode byte2);
+    int emitJump(OpCode instruction);
+    void emitLoop(int loopStart);
+    void patchJump(int offset);
+
+public:
+    Chunk compile(const std::vector<std::unique_ptr<Stmt>>& statements);
+
+    std::any visitBinaryExpr(const Binary& expr) override;
+    std::any visitGroupingExpr(const Grouping& expr) override;
+    std::any visitLiteralExpr(const Literal& expr) override;
+    std::any visitUnaryExpr(const Unary& expr) override;
+    std::any visitVariableExpr(const Variable& expr) override;
+    std::any visitAssignExpr(const Assign& expr) override;
+    std::any visitInputExpr(const Input& expr) override;
+
+    void visitExpressionStmt(const ExpressionStmt& stmt) override;
+    void visitPrintStmt(const PrintStmt& stmt) override;
+    void visitVarStmt(const VarStmt& stmt) override;
+    void visitBlockStmt(const BlockStmt& stmt) override;
+    void visitIfStmt(const IfStmt& stmt) override;
+    void visitWhileStmt(const WhileStmt& stmt) override;
+
+    void disassembleChunk(const std::string& name);
+};
