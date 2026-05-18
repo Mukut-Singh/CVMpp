@@ -75,7 +75,7 @@ To execute pre-written scripts, pass the file path directly to the executable:
 Run this script to test reading live user input from the console:
 
 ```powershell
-.\cvm.exe tests\inputPrint.cvm
+.\cvm.exe SampleTest\InputPrint.cvm
 
 ```
 
