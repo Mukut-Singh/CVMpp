@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "Expr.hpp"
 #include "Stmt.hpp"
 #include "chunk.hpp"
