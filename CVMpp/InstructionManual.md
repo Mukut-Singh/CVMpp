@@ -1,4 +1,4 @@
-# CVM++ Quick Start Guide
+# CVMpp Quick Start Guide
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ Before you start, make sure you have:
 Fire up PowerShell and jump into your project directory:
 
 ```powershell
-cd C:\Users\myste\Desktop\Code\CVMpp
+cd C:\Users\myste\myprojectsgithub\CVMpp
 
 ```
 
@@ -93,37 +93,3 @@ Whenever you run a script, the terminal will dump three distinct phases:
 
 ---
 
-## Demo Video Script (Quick Steps)
-
-If you need to record a quick demonstration, here is a clean, straightforward flow to follow:
-
-1. **Open PowerShell** and navigate to your directory:
-```powershell
-cd C:\Users\myste\Desktop\Code\CVMpp
-
-```
-
-
-2. **Compile the project** to show it builds successfully:
-```powershell
-g++ -std=c++17 -I include src\main.cpp src\token.cpp src\scanner.cpp src\parser.cpp src\compiler.cpp src\vm.cpp -o cvm.exe
-
-```
-
-
-3. **Run the calculator demo** to showcase standard operations:
-```powershell
-.\cvm.exe tests\Calculator.cvm
-
-```
-
-
-4. **Point out the console output**, highlighting how it clearly separates the generated AST, the bytecode, and the final VM results.
-5. **Run the truth-machine demo** to show control flow in action:
-```powershell
-.\cvm.exe tests\TrueFalse.cvm
-
-```
-
-
-6. **Briefly explain** that instructions like `OP_CONSTANT`, `OP_ADD`, `OP_JUMP_IF_FALSE`, and `OP_LOOP` are the custom bytecode instructions driving the virtual machine.

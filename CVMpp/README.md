@@ -2,9 +2,9 @@
 
 ---
 
-# CVM++
+# CVMpp
 
-Hey there! Welcome to **CVM++**, a lightweight, custom scripting language built from scratch in C++.
+Hey there! Welcome to **CVMpp**, a lightweight, custom scripting language built from scratch in C++.
 
 If you've ever read *Crafting Interpreters*, this architecture will feel right at home. It follows the classic compiler pipeline to take raw text and turn it into running code:
 
@@ -15,7 +15,7 @@ If you've ever read *Crafting Interpreters*, this architecture will feel right a
 
 ## What can it do?
 
-Don't let its size fool you—CVM++ comes packed with all the essentials you need for a functional scripting language:
+Don't let its size fool you—CVMpp comes packed with all the essentials you need for a functional scripting language:
 
 * **Data Types:** Full support for numbers, booleans, and strings.
 * **Math & Logic:** Standard arithmetic (`+`, `-`, `*`, `/`) and comparison operators (`==`, `!=`, `<`, `<=`, `>`, `>=`).
@@ -63,14 +63,14 @@ Or, you can pass a source file directly to the executable to run a script:
 **On Linux/macOS:**
 
 ```bash
-./cvm tests/while_loop.cvm
+./cvm SampleTest/whileLoop.cvm
 
 ```
 
 **On Windows (PowerShell):**
 
 ```powershell
-.\cvm.exe tests\while_loop.cvm
+.\cvm.exe SampleTest/whileLoop.cvm
 
 ```
 

@@ -1,4 +1,4 @@
-# CVM++ Project Report
+# CVMpp Project Report
 
 ## Project Title
 
@@ -140,4 +140,4 @@ The compiler prints the AST, then prints bytecode instructions, then the VM runs
 
 ## Conclusion
 
-CVM++ demonstrates the major stages of a compiler and virtual machine: lexical analysis, parsing, AST construction, bytecode generation, and stack-based bytecode execution. The project meets the core requirements of the problem statement while keeping the language small and understandable.
+CVMpp demonstrates the major stages of a compiler and virtual machine: lexical analysis, parsing, AST construction, bytecode generation, and stack-based bytecode execution. The project meets the core requirements of the problem statement while keeping the language small and understandable.
